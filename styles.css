@@ -1,49 +1,31 @@
 body {
-    margin: 0;
-    overflow: hidden;
     background-color: #f7f7f7;
-}
-
-.game-container {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    position: relative;
-    background-color: #f7f7f7;
-    overflow: hidden;
+    margin: 0;
 }
 
-.dino {
+#game-container {
+    position: relative;
+    width: 500px;
+    height: 200px;
+    border: 1px solid #000;
+}
+
+#dino {
+    position: absolute;
+    bottom: 0;
     width: 50px;
     height: 50px;
     background-color: #666;
-    position: absolute;
-    bottom: 0;
-    left: 50px;
-    animation: run 0.2s infinite alternate;
-}
-
-@keyframes run {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-10px);
-    }
-}
-
-.ground {
-    width: 100%;
-    height: 20px;
-    background-color: #333;
-    position: absolute;
-    bottom: 0;
 }
 
 .obstacle {
-    width: 20px;
-    height: 50px;
-    background-color: #333;
     position: absolute;
-    bottom: 20px;
-    right: 0;
+    bottom: 0;
+    width: 20px;
+    height: 80px;
+    background-color: #999;
 }
