@@ -1,12 +1,15 @@
 let dino = document.getElementById("dino");
-let obstacle = document.querySelector(".obstacle");
+let obstacle = document.getElementById("obstacle");
 let gameContainer = document.getElementById("game-container");
+let scoreDisplay = document.getElementById("score");
 let isJumping = false;
+let score = 0;
 
 function startGame() {
     document.querySelector("button").disabled = true;
+    score = 0;
+    scoreDisplay.textContent = score;
     jump();
-    createObstacle();
 }
 
 function jump() {
@@ -33,21 +36,25 @@ function jump() {
     }
 }
 
-function createObstacle() {
-    let obstacleLeft = 500;
+function moveObstacle() {
+    let obstacleLeft = 800;
     let obstacleInterval = setInterval(function() {
         if (obstacleLeft > -20) {
             obstacle.style.left = obstacleLeft + "px";
             obstacleLeft -= 10;
         } else {
             clearInterval(obstacleInterval);
-            obstacleLeft = 500;
-            createObstacle();
+            obstacleLeft = 800;
+            score++;
+            scoreDisplay.textContent = score;
+            moveObstacle();
         }
 
         if (obstacleLeft < 80 && obstacleLeft > 0 && dino.style.bottom == "0px") {
-            alert("Game Over!");
+            alert("Game Over! Score: " + score);
             document.location.reload();
         }
     }, 50);
 }
+
+moveObstacle();
